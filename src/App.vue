@@ -98,7 +98,9 @@
 
     #background {
         width: 100%;
+        height: auto !important;
         height: 100%;
+        min-height: 100%;
         background-image: url('assets/auth_background.jpg');
         background-position: center center;
         background-size: cover;
