@@ -32,7 +32,7 @@
                                 <v-card-text v-if="tasks">
                                     <TaskPreview v-for="(task, index) in tasks"
                                                  :key="index"
-                                                 :task="task" />
+                                                 :task="task"/>
                                 </v-card-text>
                             </v-card>
 
@@ -46,49 +46,51 @@
 </template>
 
 <script>
+    import axios from "axios";
     import TaskPreview from '../Task/TaskPreview';
 
-  export default {
-    name: "UserProfile",
-    components: {
-      TaskPreview
-    },
-    created() {
-      this.panelItems = [
-        {
-          name: 'My tasks',
-          expand: false
+    export default {
+        name: "UserProfile",
+        components: {
+            TaskPreview
+        },
+        created() {
+            this.panelItems = [
+                {
+                    name: 'Created tasks',
+                    expand: false
+                }
+            ];
+            this.initTasks();
+        },
+        data: () => ({
+            createdTasks: null,
+            user: {
+                id: 1,
+                languages: [
+                    'PHP',
+                    'JavaScript',
+                    'NodeJS',
+                    'TypeScript',
+                ],
+                name: 'Sokolov Alexander',
+                post: 'Frontend developer',
+                rating: 4.6
+            }
+        }),
+        computed: {
+            tasks() {
+                if (!this.createdTasks)
+                    return [];
+                return this.createdTasks;
+            }
+        },
+        methods: {
+            async initTasks() {
+                const response = await axios.get('http://10.20.2.65:8081/task/created?id=1');
+                console.log('created tasks: ', response);
+                this.createdTasks = response.data;
+            }
         }
-      ];
-      this.initTasks();
-    },
-    data: () => ({
-      allTasks: null,
-      user: {
-        id: 1,
-        languages: [
-          'PHP',
-          'JavaScript',
-          'NodeJS',
-          'TypeScript',
-        ],
-        name: 'Sokolov Alexander',
-        post: 'Frontend developer',
-        rating: 4.6
-      }
-    }),
-    computed: {
-      tasks () {
-        if (!this.allTasks)
-          return [];
-        return this.allTasks.filter(task => task.creatorId === this.user.id);
-      }
-    },
-    methods: {
-      async initTasks () {
-        const response = await fetch('http://10.20.2.65:8081/task/all');
-        this.allTasks = await response.json();
-      }
     }
-  }
 </script>
