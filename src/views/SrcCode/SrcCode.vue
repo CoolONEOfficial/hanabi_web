@@ -5,20 +5,13 @@
                     mode: 'text/' + task.lang,
                     lineNumbers: true,
                     line: true,
+                    readOnly
                 }"></codemirror>
 </template>
 
 <script>
-    export default {
-        name: "SrcCode",
-        props: ['task'],
-        data () {
-            return {
-            }
-        },
-    }
+  export default {
+    name: "SrcCode",
+    props: ['task', 'readOnly'],
+  }
 </script>
-
-<style scoped>
-
-</style>

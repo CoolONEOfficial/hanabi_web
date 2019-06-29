@@ -19,7 +19,7 @@
             </v-expansion-panel-content>
         </v-expansion-panel>
 
-        <v-expansion-panel :expand="true">
+        <v-expansion-panel v-model="panel" expand>
             <v-expansion-panel-content>
 
                 <template v-slot:header>
@@ -28,7 +28,7 @@
 
                 <v-card>
                     <v-card-text>
-                        <code class="d-block py-3 px-3">{{ review.srcCode }}</code>
+                        <SrcCode :task="review" :readOnly="true"></SrcCode>
                     </v-card-text>
                 </v-card>
 
@@ -40,14 +40,19 @@
 
 <script>
   import axios from 'axios';
+  import SrcCode from "../../SrcCode/SrcCode";
 
   export default {
     name: "ReviewItem",
+    components: {
+      SrcCode,
+    },
     created () {
       this.loadReviewItemData();
     },
     data: () => ({
-      review: {}
+      review: {},
+      panel: [ true ]
     }),
     computed: {
       reviewId() {
