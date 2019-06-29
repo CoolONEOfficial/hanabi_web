@@ -1,28 +1,40 @@
 <template>
-    <div class="wrapper pt-4 pl-4 pr-4 pb-4">
-        <v-layout row wrap>
+    <div class="wrapper py-4 px-4">
+        <h1 class="font-weight-black display-2">{{ $route.name }}</h1>
+        <div v-if="reviews">
+            <div class="my-3">
+                <v-alert :value="true"
+                         color="#2196F3"
+                         icon="info"
+                         outline>
+                    Founded: {{ reviews.length }}
+                </v-alert>
+            </div>
 
-            <v-flex md12 class="mb-3">
-                <h1 class="page-title font-weight-black mb-1">{{ $route.name }}</h1>
-                <p>In this section you can find free tasks waiting for you professional review.</p>
-            </v-flex>
-
-            <v-flex md12 v-for="(review, reviewIndex) in reviews" :key="reviewIndex">
-                <ReviewListItem :review="review" />
-            </v-flex>
-
-        </v-layout>
+            <div v-for="(review, index) in reviews" :key="index">
+                <TaskPreview :task="review" class="mb-3"/>
+            </div>
+        </div>
+        <div v-else class="py-5 px-1">
+            <div class="text-xs-center">
+            <v-progress-circular
+                    :width="3"
+                    color="primary"
+                    indeterminate />
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
   import axios from 'axios';
-  import ReviewListItem from '../ReviewListItem/ReviewListItem';
+  import TaskPreview from '../../Task/TaskPreview/TaskPreview';
+  import {mapActions, mapState} from 'vuex';
 
   export default {
     name: "ReviewList",
     components: {
-      ReviewListItem
+      TaskPreview
     },
     created () {
       this.loadReviewedTask();

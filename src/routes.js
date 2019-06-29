@@ -19,7 +19,7 @@ export const routes = [
     {
       path: '/reviews',
       component: ReviewList,
-      name: 'reviews',
+      name: 'Reviews',
     },
     {
         path: '/reviews/:id',
