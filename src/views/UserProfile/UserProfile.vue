@@ -22,7 +22,6 @@
                 </v-flex>
 
                 <v-flex md8>
-
                     <v-expansion-panel>
                         <v-expansion-panel-content v-for="(panel, index) in panelItems"
                                                    :key="index">

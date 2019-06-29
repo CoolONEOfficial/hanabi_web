@@ -4,14 +4,16 @@
             <v-navigation-drawer v-model="open" absolute
                                  temporary>
                 <v-list>
-                    <v-avatar
-                            class="ma-3"
-                            color="grey lighten-4"
-                    >
-                        <v-img :src="require('@/assets/useravatar.jpg')"/>
-                    </v-avatar>
-                    <h1 class="headline font-weight-black mx-3">{{ $store.getters.USER.name }}</h1>
-                    <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
+                    <router-link to="/users/1" style="text-decoration: none; color: black;">
+                        <v-avatar
+                                class="ma-3"
+                                color="grey lighten-4"
+                        >
+                            <v-img :src="require('@/assets/useravatar.jpg')"/>
+                        </v-avatar>
+                        <h1 class="headline font-weight-black mx-3">{{ $store.getters.USER.name }}</h1>
+                        <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
+                    </router-link>
                     <v-divider class="mb-2"></v-divider>
                     <v-list-tile>
                         <v-list-tile-action>
