@@ -11,7 +11,7 @@ export const routes = [
     {
         path: '/login',
         component: Login,
-        name: 'Login'
+        name: 'login'
     },
     {
         path: '/task/:id',
