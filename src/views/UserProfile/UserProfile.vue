@@ -31,7 +31,9 @@
 
                             <v-card>
                                 <v-card-text>
-                                    <TaskPreview />
+                                    <TaskPreview v-if="tasks" v-for="(task, index) in tasks"
+                                                 :key="index"
+                                                 :task="task" />
                                 </v-card-text>
                             </v-card>
 
@@ -59,9 +61,12 @@
           expand: false
         }
       ];
+      this.initTasks();
     },
     data: () => ({
+      allTasks: null,
       user: {
+        id: 1,
         languages: [
           'PHP',
           'JavaScript',
@@ -73,5 +78,18 @@
         rating: 4.6
       }
     }),
+    computed: {
+      tasks () {
+        if (!this.allTasks)
+          return [];
+        return this.allTasks.filter(task => task.creatorId === this.user.id);
+      }
+    },
+    methods: {
+      async initTasks () {
+        const response = await fetch('http://10.20.2.65:8081/task/all');
+        this.allTasks = await response.json();
+      }
+    }
   }
 </script>
