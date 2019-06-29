@@ -15,7 +15,8 @@
                         <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
                     </router-link>
                     <v-divider class="mb-2"></v-divider>
-                    <v-list-tile @click="router.push('tasks')">
+
+                    <v-list-tile @click="$router.push('/tasks')">
                         <v-list-tile-action>
                             <v-icon>list</v-icon>
                         </v-list-tile-action>
@@ -23,6 +24,16 @@
                             <v-list-tile-title>Tasks</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
+
+                    <v-list-tile @click="$router.push('/reviews')">
+                        <v-list-tile-action>
+                            <v-icon>insert_comment</v-icon>
+                        </v-list-tile-action>
+                        <v-list-tile-content>
+                            <v-list-tile-title>Reviews</v-list-tile-title>
+                        </v-list-tile-content>
+                    </v-list-tile>
+
                     <v-list-tile>
                         <v-list-tile-action>
                             <v-icon>person</v-icon>
@@ -67,16 +78,25 @@
 </template>
 
 <style lang="scss">
+    html, body {
+        height: 100%;
+    }
+    a {
+        text-decoration: none;
+    }
     #app {
         font-family: 'Avenir', Helvetica, Arial, sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-
+        height: 100%;
+    }
+    #app > div {
+        height: 100%;
     }
 
     #background {
         width: 100%;
-        height: calc(100vh - 64px);
+        height: 100%;
         background-image: url('assets/auth_background.jpg');
         background-position: center center;
         background-size: cover;
@@ -89,6 +109,10 @@
 
     #content-wrapper {
         width: min-content;
+    }
+
+    .page-title {
+        text-transform: capitalize;
     }
 </style>
 

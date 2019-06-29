@@ -4,7 +4,6 @@
             <v-card>
                 <v-card-title primary-title>
                     <div class="task__body">
-
                         <div class="body-2 font-weight-bold mb-1">{{ task.name }}</div>
                         <div class="body-1 mb-3">{{ task.description }}</div>
                         <v-item-group multiple>
