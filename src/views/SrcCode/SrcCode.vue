@@ -9,26 +9,23 @@
                     line: true,
 
                 }"
-                    @input="onCodeChange"></codemirror>
+        ></codemirror>
     </v-card>
 </template>
 
 <script>
     export default {
         name: "SrcCode",
-        props: ['srcCode'],
-        data() {
-            return {}
-        },
-        methods: {
-            onCodeChange() {
+        props: {
+            srcCode: {
+                type: Object,
+                default: () => {
+                }
+            },
+            readOnly: {
+                type: Boolean,
+                default: false
             }
         },
-        mounted() {
-        }
     }
 </script>
-
-<style scoped>
-
-</style>
