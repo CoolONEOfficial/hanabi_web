@@ -80,6 +80,9 @@
     html, body {
         height: 100%;
     }
+    body {
+        height: 100%;
+    }
     a {
         text-decoration: none;
     }
@@ -88,6 +91,7 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         height: 100%;
+        min-height: 100%;
     }
     #app > div {
         height: 100%;
