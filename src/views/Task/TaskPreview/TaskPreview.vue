@@ -1,9 +1,10 @@
 <template>
     <div class="task">
-        <div class="task__body">
-            <router-link :to="`/tasks/${task.id}`">
-                <v-card>
-                    <v-card-title primary-title>
+        <router-link :to="`/tasks/${task.id}`">
+            <v-card>
+                <v-card-title primary-title>
+                    <div class="task__body">
+
                         <div class="body-2 font-weight-bold mb-1">{{ task.name }}</div>
                         <div class="body-1 mb-3">{{ task.description }}</div>
                         <v-item-group multiple>
@@ -23,10 +24,10 @@
                                 </v-chip>
                             </v-item>
                         </v-item-group>
-                    </v-card-title>
-                </v-card>
-            </router-link>
-        </div>
+                    </div>
+                </v-card-title>
+            </v-card>
+        </router-link>
     </div>
 </template>
 
