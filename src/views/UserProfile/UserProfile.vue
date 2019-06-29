@@ -30,8 +30,8 @@
                             </template>
 
                             <v-card>
-                                <v-card-text>
-                                    <TaskPreview v-if="tasks" v-for="(task, index) in tasks"
+                                <v-card-text v-if="tasks">
+                                    <TaskPreview v-for="(task, index) in tasks"
                                                  :key="index"
                                                  :task="task" />
                                 </v-card-text>
