@@ -1,21 +1,31 @@
 <template>
-    <codemirror v-model="task.srcCode"
-                :options="{
+    <v-card>
+        <slot></slot>
+        <codemirror v-model="srcCode.srcCode"
+                    :options="{
                     tabSize: 4,
-                    mode: 'text/' + task.lang,
+                    mode: 'text/' + srcCode.lang,
                     lineNumbers: true,
                     line: true,
-                }"></codemirror>
+
+                }"
+                    @input="onCodeChange"></codemirror>
+    </v-card>
 </template>
 
 <script>
     export default {
         name: "SrcCode",
-        props: ['task'],
-        data () {
-            return {
+        props: ['srcCode'],
+        data() {
+            return {}
+        },
+        methods: {
+            onCodeChange() {
             }
         },
+        mounted() {
+        }
     }
 </script>
 

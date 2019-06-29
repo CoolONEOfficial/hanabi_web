@@ -3,9 +3,23 @@
         <v-layout column class="pa-3">
             <div class="headline mb-3">{{ task.name }}</div>
             <span v-html="task.description" class="mb-3"></span>
-            <SrcCode :task="task"></SrcCode>
             <v-divider class="my-3 mt-5"></v-divider>
-            <span class="display-2">Best solutions</span>
+            <SrcCode :src-code="task.srcCode">
+                <v-toolbar dense>
+                    <v-toolbar-title>{{ task.lang.toLowerCase() }}</v-toolbar-title>
+
+                    <v-spacer></v-spacer>
+
+                    <span style="font-size: 15pt" class="mr-3">Send your own solution</span>
+
+                    <v-btn icon>
+                        <v-icon>send</v-icon>
+                    </v-btn>
+                </v-toolbar>
+            </SrcCode>
+            <v-divider class="my-3 mt-5"></v-divider>
+            <span class="display-1">Other solutions:</span>
+            <Solution :key="index" v-for="(s, index) in task.solutions" :srcCode="task.srcCode"></Solution>
         </v-layout>
     </v-container>
 </template>
@@ -13,16 +27,19 @@
 <script>
     import axios from "axios";
     import SrcCode from "../SrcCode/SrcCode";
+    import Solution from "../Solution/Solution";
 
     export default {
         name: "Task",
-        components: {SrcCode},
+        components: {Solution, SrcCode},
         data () {
             return {
                 task: {
                     name: 'Loading...',
-                    srcCode: 'Loading...',
-                    lang: 'text',
+                    srcCode: {
+                        srcCode: '',
+                        lang: 'text',
+                    },
                     description: 'Loading...',
                 },
             }

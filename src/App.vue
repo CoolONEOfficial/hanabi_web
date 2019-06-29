@@ -15,7 +15,6 @@
                         <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
                     </router-link>
                     <v-divider class="mb-2"></v-divider>
-
                     <v-list-tile @click="$router.push('/tasks')">
                         <v-list-tile-action>
                             <v-icon>list</v-icon>
@@ -24,7 +23,6 @@
                             <v-list-tile-title>Tasks</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-
                     <v-list-tile @click="$router.push('/reviews')">
                         <v-list-tile-action>
                             <v-icon>insert_comment</v-icon>
@@ -66,6 +64,7 @@
                         <v-flex xs10 offset-xs1>
                             <v-card id="content-wrapper" style="width: 100%;">
                                 <router-view/>
+                                <TaskAdd task-id="1"></TaskAdd>
                             </v-card>
                         </v-flex>
                     </v-layout>
@@ -117,8 +116,11 @@
 </style>
 
 <script>
+    import Task from "./views/Task/Task";
+    import TaskAdd from "./views/Task/TaskAdd/TaskAdd";
     export default {
         name: 'App',
+        components: {TaskAdd, Task},
         data() {
             return {
                 open: false,
