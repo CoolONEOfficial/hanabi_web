@@ -18,5 +18,10 @@ export const routes = [
         component: Task,
         name: 'Task description'
     },
-    {path: '*', redirect: {name: 'login'}}
+    {
+        path: '*',
+        redirect: {
+            name: 'login'
+        }
+    }
 ];
