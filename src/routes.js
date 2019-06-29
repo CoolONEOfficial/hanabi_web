@@ -11,12 +11,17 @@ export const routes = [
     {
         path: '/login',
         component: Login,
-        name: 'Login'
+        name: 'login'
     },
     {
         path: '/task/:id',
         component: Task,
         name: 'Task description'
     },
-    {path: '*', redirect: {name: 'login'}}
+    {
+        path: '*',
+        redirect: {
+            name: 'login'
+        }
+    }
 ];
