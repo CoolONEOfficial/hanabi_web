@@ -1,45 +1,40 @@
 <template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div class="wrapper">
         <v-container grid-list-md>
-            <v-layout row wrap>
+            <v-layout column class="text-xs-center">
 
-                <v-flex md4>
-                    <div v-if="user">
-                        <v-avatar :size="'128px'"
-                                  color="grey lighten-4 mb-3">
-                            <img src="../../assets/useravatar.jpg" alt="" style="max-width: 100%; height: auto"/>
-                        </v-avatar>
-                        <h1 class="headline font-weight-black">{{ user.name }}</h1>
-                        <h2 class="subheading font-weight-normal mb-3">{{ user.post }}</h2>
-                        <h3><span>Rating:</span> {{ user.rating }}</h3>
-                        <v-layout wrap class="align-content-space-between mt-3">
-                            <v-chip :key="index" v-for="(language, index) in user.languages">
-                                {{ language }}
-                            </v-chip>
-                        </v-layout>
-                    </div>
-                </v-flex>
+                <div v-if="user" class="my-3">
+                    <v-avatar :size="'128px'"
+                              color="grey lighten-4 mb-3">
+                        <img src="../../assets/useravatar.jpg" alt="" style="max-width: 100%; height: auto"/>
+                    </v-avatar>
+                    <h1 class="headline font-weight-black">{{ user.name }}</h1>
+                    <h2 class="subheading font-weight-normal mb-3">{{ user.post }}</h2>
+                    <h3><span>Rating:</span> {{ user.rating }}</h3>
+                    <v-layout wrap class="mt-3 justify-center">
+                        <v-chip :key="index" v-for="(language, index) in user.languages">
+                            {{ language }}
+                        </v-chip>
+                    </v-layout>
+                </div>
 
-                <v-flex md8>
-                    <v-expansion-panel>
-                        <v-expansion-panel-content v-for="(panel, index) in panelItems"
-                                                   :key="index">
-                            <template v-slot:header>
-                                <h3>{{ panel.name }}</h3>
-                            </template>
+                <v-expansion-panel>
+                    <v-expansion-panel-content v-for="(panel, index) in panelItems"
+                                               :key="index">
+                        <template v-slot:header>
+                            <h3>{{ panel.name }}</h3>
+                        </template>
 
-                            <v-card>
-                                <v-card-text v-if="tasks">
-                                    <TaskPreview v-for="(task, index) in tasks"
-                                                 :key="index"
-                                                 :task="task"/>
-                                </v-card-text>
-                            </v-card>
+                        <v-card>
+                            <v-card-text v-if="tasks">
+                                <TaskPreview v-for="(task, index) in tasks"
+                                             :key="index"
+                                             :task="task"/>
+                            </v-card-text>
+                        </v-card>
 
-                        </v-expansion-panel-content>
-                    </v-expansion-panel>
-
-                </v-flex>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
             </v-layout>
         </v-container>
     </div>

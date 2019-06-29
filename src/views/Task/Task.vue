@@ -1,25 +1,48 @@
 <template>
     <v-container>
+        <v-dialog
+                v-model="sending"
+                hide-overlay
+                persistent
+                width="300"
+        >
+            <v-card
+                    color="primary"
+                    dark
+            >
+                <v-card-text>
+                    Sending solution...
+                    <v-progress-linear
+                            indeterminate
+                            color="white"
+                            class="mb-0"
+                    ></v-progress-linear>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
         <v-layout column class="pa-3">
             <div class="headline mb-3">{{ task.name }}</div>
             <span v-html="task.description" class="mb-3"></span>
-            <v-divider class="my-3 mt-5"></v-divider>
             <SrcCode :src-code="task.srcCode">
                 <v-toolbar dense>
-                    <v-toolbar-title>{{ task.language != null ? task.language.toLowerCase() : '' }}</v-toolbar-title>
+                    <v-toolbar-title>{{ task.lang != null ? task.lang.replace('X_', '') : '' }}</v-toolbar-title>
 
                     <v-spacer></v-spacer>
 
                     <span style="font-size: 15pt" class="mr-3">Send your own solution</span>
 
-                    <v-btn icon>
+                    <v-btn icon @click="solve">
                         <v-icon>send</v-icon>
                     </v-btn>
                 </v-toolbar>
             </SrcCode>
             <v-divider class="my-3 mt-5"></v-divider>
             <span class="display-1">Other solutions:</span>
-            <Solution :key="index" v-for="(s, index) in task.solutions" :srcCode="task.srcCode"></Solution>
+            <div v-if="task.solutions && task.solutions.length">
+                <Solution :key="index" v-for="(s, index) in task.solutions"
+                          :srcCode="s.srcCode"></Solution>
+            </div>
+            <span v-else class="text-xs-center ma-3 display-2"><small>No solutions..</small><br><b>Be first!</b></span>
         </v-layout>
     </v-container>
 </template>
@@ -32,8 +55,9 @@
     export default {
         name: "Task",
         components: {Solution, SrcCode},
-        data () {
+        data() {
             return {
+                sending: false,
                 task: {
                     name: 'Loading...',
                     src: {
@@ -49,6 +73,30 @@
                 .then(resp => this.task = resp.data)
                 .catch(err => console.log(err));
         },
+        methods: {
+            async solve() {
+                this.sending = true;
+
+                let resp = await axios.post('http://10.20.2.65:8081/task/solve?userId=1&taskId=' + this.$route.params.id,
+                    {
+                        rating: this.rating,
+                        src: {
+                            srcCode: this.srcCode,
+                            language: this.lang,
+                        },
+                    },
+                    {
+                        'Access-Control-Allow-Origin': '*',
+                    },
+                );
+
+                console.log("resp: ", resp);
+
+                // this.$parent.reload();
+
+                this.sending = false;
+            }
+        }
     }
 </script>
 

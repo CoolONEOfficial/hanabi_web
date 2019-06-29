@@ -1,6 +1,5 @@
 <template>
     <v-layout>
-        Solutionnn!beach
         <SrcCode :srcCode="srcCode">
         </SrcCode>
     </v-layout>
