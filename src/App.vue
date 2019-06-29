@@ -15,7 +15,7 @@
                         <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
                     </router-link>
                     <v-divider class="mb-2"></v-divider>
-                    <v-list-tile>
+                    <v-list-tile @click="router.push('tasks')">
                         <v-list-tile-action>
                             <v-icon>list</v-icon>
                         </v-list-tile-action>
