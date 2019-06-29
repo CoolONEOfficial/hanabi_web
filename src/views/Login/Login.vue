@@ -23,18 +23,11 @@
                         <v-text-field
                                 prepend-icon="face"
                                 type="text"
-                                @click:prepend="prependClicked"
-                                color="white"
-                                @click:append-outer="appendClicked"
-                                counter="10"
                         >
                         </v-text-field>
                         <v-text-field
                                 prepend-icon="lock"
                                 type="password"
-                                @click:prepend="prependClicked"
-                                color="white"
-                                @click:append-outer="appendClicked"
                         >
                         </v-text-field>
                     </v-form>

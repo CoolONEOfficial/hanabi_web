@@ -4,9 +4,18 @@
             <v-navigation-drawer v-model="open" absolute
                                  temporary>
                 <v-list>
+                    <v-avatar
+                            class="ma-3"
+                            color="grey lighten-4"
+                    >
+                        <v-img :src="require('@/assets/useravatar.jpg')"/>
+                    </v-avatar>
+                    <h1 class="headline font-weight-black mx-3">{{ $store.getters.USER.name }}</h1>
+                    <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
+                    <v-divider class="mb-2"></v-divider>
                     <v-list-tile>
                         <v-list-tile-action>
-                            <v-icon>chevron_right</v-icon>
+                            <v-icon>list</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>Tasks</v-list-tile-title>
@@ -14,7 +23,7 @@
                     </v-list-tile>
                     <v-list-tile>
                         <v-list-tile-action>
-                            <v-icon>aspect_ratio</v-icon>
+                            <v-icon>person</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
                             <v-list-tile-title>Users</v-list-tile-title>
@@ -35,9 +44,7 @@
                 <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-toolbar-items class="hidden-sm-and-down">
-                    <v-btn flat>Link One</v-btn>
-                    <v-btn flat>Link Two</v-btn>
-                    <v-btn flat>Link Three</v-btn>
+                    <v-btn @click="logout" flat to="/login">Logout</v-btn>
                 </v-toolbar-items>
             </v-toolbar>
             <div id="background">
@@ -94,7 +101,13 @@
         methods: {
             toggleDrawer() {
                 this.open = !this.open;
-            }
+            },
+            logout: function () {
+                this.$store.dispatch('logout')
+                    .then(() => {
+                        this.$router.push('/login')
+                    })
+            },
         },
     }
 </script>
