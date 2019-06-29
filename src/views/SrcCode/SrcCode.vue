@@ -12,6 +12,15 @@
 <script>
   export default {
     name: "SrcCode",
-    props: ['task', 'readOnly'],
+    props: {
+      task: {
+        type: Object,
+        default: () => {}
+      },
+      readOnly: {
+        type: Boolean,
+        default: false
+      }
+    },
   }
 </script>
