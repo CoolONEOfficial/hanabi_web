@@ -1,9 +1,8 @@
 <template>
-    <div class="wrapper py-4 px-4">
+    <div v-if="tasks" class="wrapper py-4 px-4">
         <div v-for="(task, index) in tasks" :key="index">
             <TaskPreview :task="task" class="mb-3"/>
         </div>
-
     </div>
 </template>
 
