@@ -6,7 +6,7 @@
             <v-divider class="my-3 mt-5"></v-divider>
             <SrcCode :src-code="task.srcCode">
                 <v-toolbar dense>
-                    <v-toolbar-title>{{ task.lang.toLowerCase() }}</v-toolbar-title>
+                    <v-toolbar-title>{{ task.language.toLowerCase() }}</v-toolbar-title>
 
                     <v-spacer></v-spacer>
 
@@ -36,9 +36,9 @@
             return {
                 task: {
                     name: 'Loading...',
-                    srcCode: {
+                    src: {
                         srcCode: '',
-                        lang: 'text',
+                        language: 'text',
                     },
                     description: 'Loading...',
                 },

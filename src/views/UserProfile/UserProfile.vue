@@ -17,7 +17,6 @@
                                 {{ language }}
                             </v-chip>
                         </v-layout>
-
                     </div>
                 </v-flex>
 

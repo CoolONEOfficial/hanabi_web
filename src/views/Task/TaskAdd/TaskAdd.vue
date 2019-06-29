@@ -2,6 +2,26 @@
     <v-dialog v-model="dialog" fullscreen>
         <template v-slot:activator="{ on }">
             <v-btn color="primary" dark v-on="on">Open Dialog</v-btn>
+            <v-dialog
+                    v-model="loading"
+                    hide-overlay
+                    persistent
+                    width="300"
+            >
+                <v-card
+                        color="primary"
+                        dark
+                >
+                    <v-card-text>
+                        Creating task...
+                        <v-progress-linear
+                                indeterminate
+                                color="white"
+                                class="mb-0"
+                        ></v-progress-linear>
+                    </v-card-text>
+                </v-card>
+            </v-dialog>
         </template>
         <v-card>
             <v-toolbar dark color="primary">
@@ -46,7 +66,6 @@
     import SrcCode from "../../SrcCode/SrcCode";
 
     export default {
-        props: ["taskId"],
         components: {
             SrcCode,
             VueEditor: VueEditor
@@ -55,22 +74,20 @@
         data() {
             return {
                 srcCode: '// TODO: enter code here',
-                lang: null,
+                lang: 'X_JAVA',
                 dialog: false,
                 title: "",
                 html: "Task description <b>here</b>",
                 loading: false,
-                languages: ['X-JAVA', 'JAVASCRIPT',],
+                languages: ['X_JAVA', 'JAVASCRIPT',],
             };
         },
         methods: {
             async send() {
                 this.loading = true;
 
-                let resp = await axios.post('http://10.20.2.65:8081/task/create',
+                let resp = await axios.post('http://10.20.2.65:8081/task/create?id=1',
                     {
-                        taskId: this.taskId,
-                        creatorId: 1,
                         description: this.html,
                         lang: this.lang,
                         name: this.title,
@@ -83,7 +100,7 @@
 
                 console.log("resp: ", resp);
 
-                this.$parent.reload();
+                // this.$parent.reload();
 
                 this.loading = false;
                 this.dialog = false;

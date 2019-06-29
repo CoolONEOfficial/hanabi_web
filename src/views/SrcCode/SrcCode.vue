@@ -4,7 +4,7 @@
         <codemirror v-model="srcCode.srcCode"
                     :options="{
                     tabSize: 4,
-                    mode: 'text/' + srcCode.lang,
+                    mode: 'text/' + srcCode.lang != null ? srcCode.lang.replace('_', '-') : 'text',
                     lineNumbers: true,
                     line: true,
 
