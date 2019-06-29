@@ -8,10 +8,10 @@
             >
                 <v-flex xs12>
                     <v-img
-                            :src="require('../../assets/logo.svg')"
+                            :src="require('../../assets/favicon.png')"
                             class="my-3"
                             contain
-                            height="200"
+                            height="160"
                     ></v-img>
                 </v-flex>
 
@@ -39,9 +39,7 @@
                         </v-text-field>
                     </v-form>
                     <br>
-                    <router-link to="/users/1">
-                        <v-btn color="primary" style="background: rgb(20, 54, 143)" large>Enter</v-btn>
-                    </router-link>
+                    <v-btn color="primary" style="background: rgb(20, 54, 143)" large to="/users/1">Enter</v-btn>
                 </v-flex>
 
             </v-layout>
