@@ -1,4 +1,6 @@
-import Vue from 'vue';
+import Vue from 'vue'
+import './plugins/vuetify'
+import App from './App.vue'
 import VueRouter from 'vue-router';
 import App from './App.vue';
 import { routes } from './routes';
