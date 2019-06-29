@@ -9,7 +9,7 @@
                             <v-icon>chevron_right</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title>Static Drawer</v-list-tile-title>
+                            <v-list-tile-title>Tasks</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile>
@@ -17,7 +17,7 @@
                             <v-icon>aspect_ratio</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title>Mini Drawer</v-list-tile-title>
+                            <v-list-tile-title>Users</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                     <v-list-tile>
@@ -25,7 +25,7 @@
                             <v-icon>dashboard</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title>Dashboard</v-list-tile-title>
+                            <v-list-tile-title>Leaderboard</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
                 </v-list>
