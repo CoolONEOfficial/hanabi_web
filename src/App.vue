@@ -64,7 +64,6 @@
                         <v-flex xs10 offset-xs1>
                             <v-card id="content-wrapper" style="width: 100%;">
                                 <router-view/>
-                                <TaskAdd></TaskAdd>
                             </v-card>
                         </v-flex>
                     </v-layout>
@@ -107,7 +106,7 @@
     }
 
     #container {
-        margin-top: 64px;
+        padding-top: 100px;
     }
 
     #content-wrapper {

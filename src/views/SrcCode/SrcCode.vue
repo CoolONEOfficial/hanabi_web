@@ -1,10 +1,10 @@
 <template>
     <v-card>
         <slot></slot>
-        <codemirror v-model="srcCode.srcCode"
+        <codemirror v-model="srcCode"
                     :options="{
                     tabSize: 4,
-                    mode: 'text/' + srcCode.lang != null ? srcCode.lang.replace('_', '-') : 'text',
+                    mode: 'text/' + srcCode != null && srcCode.lang != null ? srcCode.lang.replace('_', '-') : 'text',
                     lineNumbers: true,
                     line: true,
 
