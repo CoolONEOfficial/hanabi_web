@@ -23,12 +23,9 @@
 </style>
 
 <script>
-import AuthForm from './components/AuthForm'
-
 export default {
   name: 'App',
   components: {
-    AuthForm: AuthForm
   },
   data () {
     return {
