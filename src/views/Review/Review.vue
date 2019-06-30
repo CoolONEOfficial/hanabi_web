@@ -1,9 +1,10 @@
 <template>
     <v-layout column>
-        <span class="display-1">{{ review.title }}</span>
-        <span v-html="review.description"></span>
-        <v-divider></v-divider>
         <UserPreview :user="review.user"></UserPreview>
+        <v-divider class="my-3"></v-divider>
+        <span class="display-1">{{ review.title }}</span>
+        <v-divider class="my-3"></v-divider>
+        <span class="mt-2" v-html="review.description"></span>
     </v-layout>
 </template>
 

@@ -88,6 +88,8 @@
 
                 console.log("resp: ", resp);
 
+                this.$parent.$parent.$parent.$parent.$parent.loadTask();
+
                 this.loading = false;
                 this.dialog = false;
             }
