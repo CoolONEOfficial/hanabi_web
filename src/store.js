@@ -8,12 +8,6 @@ export default new Vuex.Store({
     user: {
       name: 'Sokolov Alexander',
       post: 'Frontend developer',
-      languages: [
-        'PHP',
-        'JavaScript',
-        'NodeJS',
-        'TypeScript',
-      ],
       rating: 4.6,
     }
   },

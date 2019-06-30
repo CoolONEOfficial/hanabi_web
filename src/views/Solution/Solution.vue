@@ -6,12 +6,12 @@
         </v-card>
 
         <SrcCode :srcCode="srcCode" readOnly>
+            <v-rating v-model="rating" readonly></v-rating>
             <ReviewAdd :solution-id="solutionId"></ReviewAdd>
         </SrcCode>
-
-        <v-layout column v-if="reviews" class="ml-3">
-            <span class="display-1">Reviews:</span>
-            <v-card v-for="(r, index) of reviews" :key="index" class="mb-3">
+        <v-layout column v-if="reviews && reviews.length" class="ml-3">
+            <span class="display-1 ma-3">Reviews:</span>
+            <v-card v-for="(r, index) of reviews" :key="index" class="pa-3">
                 <Review :review="r"></Review>
                 <v-rating v-model="r.rating" readonly small></v-rating>
             </v-card>

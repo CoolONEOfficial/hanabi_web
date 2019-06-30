@@ -2,6 +2,8 @@
     <div class="task">
         <router-link :to="`/tasks/${task.id}`">
             <v-card>
+                <UserPreview :user="task.creator"></UserPreview>
+                <v-divider></v-divider>
                 <v-card-title primary-title>
                     <div class="task__body">
                         <div class="body-2 font-weight-bold mb-1">{{ task.name }}</div>
@@ -9,7 +11,9 @@
                         <v-item-group multiple>
                             <v-item>
                                 <v-chip label>
-                                    <span class="lang">{{ task.src.language.replace('X_', '').toLowerCase() }}</span>
+                                    <span class="lang">{{ task.src.language != null ? task.src.language.replace('X_',
+                                        '').toLowerCase()  : 'Unknown language'
+                                        }}</span>
                                 </v-chip>
                             </v-item>
                             <v-item>
@@ -31,9 +35,11 @@
 </template>
 
 <script>
+  import UserPreview from "../../User/UserPreview/UserPreview";
   export default {
     name: "TaskPreview",
-    props: {
+      components: {UserPreview},
+      props: {
       task: {
         type: Object,
         required: true
