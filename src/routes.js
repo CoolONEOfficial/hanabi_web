@@ -1,4 +1,4 @@
-const UserProfile = () => import('./views/UserProfile/UserProfile');
+const UserProfile = () => import('./views/User/UserProfile/UserProfile');
 const Login = () => import('./views/Login/Login');
 const ReviewList = () => import('./views/Review/ReviewList/ReviewList');
 const ReviewItem = () => import('./views/Review/ReviewItem/ReviewItem');

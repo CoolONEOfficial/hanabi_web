@@ -98,7 +98,6 @@
 
     #background {
         width: 100%;
-        height: auto !important;
         height: 100%;
         min-height: 100%;
         background-image: url('assets/auth_background.jpg');
@@ -121,11 +120,8 @@
 </style>
 
 <script>
-    import Task from "./views/Task/Task";
-    import TaskAdd from "./views/Task/TaskAdd/TaskAdd";
     export default {
         name: 'App',
-        components: {TaskAdd, Task},
         data() {
             return {
                 open: false,

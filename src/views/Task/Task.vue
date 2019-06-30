@@ -40,7 +40,8 @@
             <span class="display-1">Other solutions:</span>
             <div v-if="task.solutions && task.solutions.length">
                 <Solution :key="index" v-for="(s, index) in task.solutions"
-                          :srcCode="s.src"></Solution>
+                          :srcCode="s.src"
+                            :user="s.user"></Solution>
             </div>
             <span v-else class="text-xs-center ma-3 display-2"><small>No solutions..</small><br><b>Be first!</b></span>
         </v-layout>

@@ -1,15 +1,17 @@
 <template>
-    <v-layout>
+    <v-layout column>
         <SrcCode :srcCode="srcCode">
+            <UserPreview :user="user"></UserPreview>
         </SrcCode>
     </v-layout>
 </template>
 
 <script>
     import SrcCode from "../SrcCode/SrcCode";
+    import UserPreview from "../User/UserPreview/UserPreview";
     export default {
-        props: ['srcCode'],
+        props: ['srcCode', 'user'],
         name: "Solution",
-        components: {SrcCode}
+        components: {UserPreview, SrcCode}
     }
 </script>

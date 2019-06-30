@@ -6,7 +6,7 @@
                 <div v-if="user" class="my-3">
                     <v-avatar :size="'128px'"
                               color="grey lighten-4 mb-3">
-                        <img src="../../assets/useravatar.jpg" alt="" style="max-width: 100%; height: auto"/>
+                        <img src="../../../assets/useravatar.jpg" alt="" style="max-width: 100%; height: auto"/>
                     </v-avatar>
                     <h1 class="headline font-weight-black">{{ user.name }}</h1>
                     <h2 class="subheading font-weight-normal mb-3">{{ user.post }}</h2>
@@ -42,7 +42,7 @@
 
 <script>
     import axios from "axios";
-    import TaskPreview from '../Task/TaskPreview';
+    import TaskPreview from '../../Task/TaskPreview';
 
     export default {
         name: "UserProfile",
