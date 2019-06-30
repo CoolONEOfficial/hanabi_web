@@ -30,19 +30,22 @@
                 <v-divider class="mt-3"></v-divider>
             </v-card>
             <SrcCode :src-code="task.src" class="mt-3">
-                <span style="font-size: 15pt" class="mr-3">Send your own solution</span>
-
-                <v-btn icon @click="solve">
-                    <v-icon>send</v-icon>
-                </v-btn>
+                <div class="align-center d-flex justify-end">
+                    <v-rating v-model="rating"></v-rating>
+                    <v-btn icon @click="solve">
+                        <v-icon>send</v-icon>
+                    </v-btn>
+                </div>
             </SrcCode>
 
             <span class="display-1 mt-5">Community solutions:</span>
             <v-divider class="my-3"></v-divider>
+            
             <div v-if="task.solutions && task.solutions.length">
                 <Solution :key="index" v-for="(s, index) in task.solutions"
                           :srcCode="s.src"
                           :user="s.user"
+                          :rating="s.rating"
                           :solution-id="s.id"
                           :reviews="s.solutionReviews"
                           class="mb-3">
@@ -65,6 +68,7 @@
         data() {
             return {
                 sending: false,
+                rating: 0,
                 task: {
                     name: 'Loading...',
                     src: {

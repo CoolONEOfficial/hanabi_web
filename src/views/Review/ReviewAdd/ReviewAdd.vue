@@ -45,6 +45,7 @@
                             box
                             v-model="title"
                     ></v-text-field>
+                    <v-rating v-model="rating"></v-rating>
                     <VueEditor v-model="html">
                     </VueEditor>
                 </v-flex>
@@ -67,6 +68,7 @@
                 title: "",
                 html: "Write review there..",
                 loading: false,
+              rating: 0
             };
         },
         methods: {
@@ -77,7 +79,7 @@
                     {
                         description: this.html,
                         title: this.title,
-                        rating: 5,
+                        rating: this.rating,
                     },
                     {
                         'Access-Control-Allow-Origin': '*',
