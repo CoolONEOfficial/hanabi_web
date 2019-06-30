@@ -40,7 +40,7 @@
 
             <span class="display-1 mt-5">Community solutions:</span>
             <v-divider class="my-3"></v-divider>
-            
+
             <div v-if="task.solutions && task.solutions.length">
                 <Solution :key="index" v-for="(s, index) in task.solutions"
                           :srcCode="s.src"

@@ -24,22 +24,30 @@
             </v-flex>
         </v-layout>
 
-        <v-layout row>
-            <v-layout>
-                <v-flex md12>
-                    <v-card  v-for="(m, index) in selectedTags" :key="index" class="mb-3">
-                        <div class="px-4 py-4">
-                            <h2>{{ m.tag }} ({{ m.rating }})</h2>
-                            <v-slider v-model="m.rating" class="mb-0 fluid" max="10" step="0.1" />
-                        </div>
-                    </v-card>
-                </v-flex>
-            </v-layout>
+        <v-layout column>
+            <v-flex md12>
+                <v-card  v-for="(m, index) in selectedTags" :key="index" class="mb-3">
+                    <div class="px-4 py-4">
+                        <h2>{{ m.tag }} ({{ m.rating }})</h2>
+                        <v-slider v-model="m.rating" class="mb-0 fluid" max="10" step="0.1" />
+                    </div>
+                </v-card>
+            </v-flex>
+            <v-flex md12>
+                <v-btn outline medium color="indigo" @click="search">
+                    <div class="mr-2">Search</div>
+                    <v-icon>search</v-icon>
+                </v-btn>
+            </v-flex>
+        </v-layout>
+        <pre>{{ st }}</pre>
 
-            <v-card v-for="(u, index) of users" :key="index" style="max-width: 33vw">
-                <UserPreview :user="u"></UserPreview>
-            </v-card>
-
+        <v-layout row class="py-4">
+            <v-flex md12>
+                <v-card v-for="(u, index) of users" :key="index" class="fluid">
+                    <UserPreview :user="u" :showAddInfo="true"></UserPreview>
+                </v-card>
+            </v-flex>
         </v-layout>
     </v-container>
 </template>
@@ -108,21 +116,21 @@
           },
         ],
         selectedTags: [{
-          tag: 'Brainfuck',
+          tag: 'Java',
           rating: 0
         }],
         users: [],
       };
     },
+    computed: {
+      st () {
+        return null;
+      }
+    },
     methods: {
       search() {
-        axios.post('http://10.20.2.65:8081/task/suitable?id=1', {
-            filters: this.selectedTags
-          },
-          {
-            'Access-Control-Allow-Origin': '*',
-          },)
-        .then(({data}) => {
+        axios.post('http://10.20.2.65:8081/user/suitable')
+        .then(({ data }) => {
           this.users = data;
         })
         .catch(error => {
