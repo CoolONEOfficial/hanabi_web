@@ -21,12 +21,13 @@
             </v-card>
         </v-dialog>
         <v-layout column class="pa-3">
-            <v-card class="px-3">
+            <v-card class="px-3 pt-2">
+                <UserPreview :user="task.creator"></UserPreview>
+                <v-divider class="mb-3"></v-divider>
                 <div class="headline my-3">{{ task.name }}</div>
                 <v-divider class="mb-3"></v-divider>
                 <span v-html="task.description"></span>
                 <v-divider class="mt-3"></v-divider>
-
             </v-card>
             <SrcCode :src-code="task.src" class="mt-3">
                 <span style="font-size: 15pt" class="mr-3">Send your own solution</span>
@@ -36,16 +37,15 @@
                 </v-btn>
             </SrcCode>
 
-            <v-card class="mt-3">
-                <UserPreview user="task.user"></UserPreview>
-            </v-card>
-
             <span class="display-1 mt-5">Community solutions:</span>
             <v-divider class="my-3"></v-divider>
             <div v-if="task.solutions && task.solutions.length">
                 <Solution :key="index" v-for="(s, index) in task.solutions"
                           :srcCode="s.src"
-                          :user="s.user">
+                          :user="s.user"
+                          :solution-id="s.id"
+                          :reviews="s.solutionReviews"
+                          class="mb-3">
                 </Solution>
             </div>
             <span v-else class="text-xs-center ma-3 display-2"><small>No solutions..</small><br><b>Be first!</b></span>
@@ -72,7 +72,7 @@
                         language: 'text',
                     },
                     description: 'Loading...',
-                    user: {}
+                    creator: {}
                 },
             }
         },

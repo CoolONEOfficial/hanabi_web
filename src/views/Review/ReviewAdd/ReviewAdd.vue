@@ -58,6 +58,7 @@
     import axios from "axios";
 
     export default {
+        props: ['solutionId'],
         name: "ReviewAdd",
         components: {VueEditor},
         data() {
@@ -72,10 +73,11 @@
             async send() {
                 this.loading = true;
 
-                let resp = await axios.post('http://10.20.2.65:8081/task/review?id=1',
+                let resp = await axios.post('http://10.20.2.65:8081/solution/review?userId=1&solutionId=' + this.solutionId,
                     {
                         description: this.html,
-                        name: this.title,
+                        title: this.title,
+                        rating: 5,
                     },
                     {
                         'Access-Control-Allow-Origin': '*',
@@ -84,11 +86,12 @@
 
                 console.log("resp: ", resp);
 
-                this.$parent.loadTask();
-
                 this.loading = false;
                 this.dialog = false;
             }
+        },
+        mounted() {
+            console.log('sol id: ' + this.solutionId);
         }
     }
 </script>
