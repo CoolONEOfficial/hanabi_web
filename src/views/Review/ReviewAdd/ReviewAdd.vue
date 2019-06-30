@@ -68,7 +68,7 @@
                 title: "",
                 html: "Write review there..",
                 loading: false,
-              rating: 0
+              rating: .0
             };
         },
         methods: {
@@ -79,7 +79,7 @@
                     {
                         description: this.html,
                         title: this.title,
-                        rating: this.rating,
+                        rating: parseFloat(this.rating),
                     },
                     {
                         'Access-Control-Allow-Origin': '*',
