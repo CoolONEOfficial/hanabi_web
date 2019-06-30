@@ -12,6 +12,8 @@
     export default {
         props: ['srcCode', 'user'],
         name: "Solution",
-        components: {UserPreview, SrcCode}
+        components: {
+          UserPreview, SrcCode
+        }
     }
 </script>

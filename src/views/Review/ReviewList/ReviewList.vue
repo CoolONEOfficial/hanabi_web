@@ -29,7 +29,6 @@
 <script>
   import axios from 'axios';
   import TaskPreview from '../../Task/TaskPreview/TaskPreview';
-  import {mapActions, mapState} from 'vuex';
 
   export default {
     name: "ReviewList",
