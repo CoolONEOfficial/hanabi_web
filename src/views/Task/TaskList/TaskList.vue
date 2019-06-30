@@ -1,6 +1,10 @@
 <template>
     <div class="wrapper py-4 px-4">
-        <h1 class="font-weight-black display-2">{{ $route.name }}</h1>
+        <v-layout>
+            <h1 class="font-weight-black display-2">{{ $route.name }}</h1>
+            <v-spacer></v-spacer>
+            <TaskAdd></TaskAdd>
+        </v-layout>
         <div v-if="tasks">
             <div class="my-3">
                 <v-alert :value="true"
@@ -20,10 +24,12 @@
 <script>
   import axios from 'axios';
   import TaskPreview from '../TaskPreview/TaskPreview';
+  import TaskAdd from "../TaskAdd/TaskAdd";
 
   export default {
     name: "TaskList",
     components: {
+        TaskAdd,
       TaskPreview
     },
     created () {

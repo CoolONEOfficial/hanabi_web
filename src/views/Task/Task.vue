@@ -23,9 +23,9 @@
         <v-layout column class="pa-3">
             <div class="headline mb-3">{{ task.name }}</div>
             <span v-html="task.description" class="mb-3"></span>
-            <SrcCode :src-code="task.srcCode">
+            <SrcCode :src-code="task.src">
                 <v-toolbar dense>
-                    <v-toolbar-title>{{ task.lang != null ? task.lang.replace('X_', '') : '' }}</v-toolbar-title>
+                    <v-toolbar-title>{{ task.src.language != null ? task.src.language.replace('X_', '') : '' }}</v-toolbar-title>
 
                     <v-spacer></v-spacer>
 
@@ -40,7 +40,7 @@
             <span class="display-1">Other solutions:</span>
             <div v-if="task.solutions && task.solutions.length">
                 <Solution :key="index" v-for="(s, index) in task.solutions"
-                          :srcCode="s.srcCode"></Solution>
+                          :srcCode="s.src"></Solution>
             </div>
             <span v-else class="text-xs-center ma-3 display-2"><small>No solutions..</small><br><b>Be first!</b></span>
         </v-layout>
@@ -69,21 +69,21 @@
             }
         },
         mounted() {
-            axios.get('http://10.20.2.65:8081/task/get?id=' + this.$route.params.id)
-                .then(resp => this.task = resp.data)
-                .catch(err => console.log(err));
+            this.loadTask();
         },
         methods: {
+            loadTask() {
+                axios.get('http://10.20.2.65:8081/task/get?id=' + this.$route.params.id)
+                    .then(resp => this.task = resp.data)
+                    .catch(err => console.log(err));
+            },
             async solve() {
                 this.sending = true;
 
                 let resp = await axios.post('http://10.20.2.65:8081/task/solve?userId=1&taskId=' + this.$route.params.id,
                     {
                         rating: this.rating,
-                        src: {
-                            srcCode: this.srcCode,
-                            language: this.lang,
-                        },
+                        src: this.task.src,
                     },
                     {
                         'Access-Control-Allow-Origin': '*',
@@ -92,7 +92,7 @@
 
                 console.log("resp: ", resp);
 
-                // this.$parent.reload();
+                this.loadTask();
 
                 this.sending = false;
             }

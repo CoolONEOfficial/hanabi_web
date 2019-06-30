@@ -13,7 +13,3 @@
         components: {SrcCode}
     }
 </script>
-
-<style scoped>
-
-</style>

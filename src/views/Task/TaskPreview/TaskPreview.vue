@@ -9,7 +9,7 @@
                         <v-item-group multiple>
                             <v-item>
                                 <v-chip label>
-                                    <span class="lang">{{ task.lang.replace('X_', '').toLowerCase() }}</span>
+                                    <span class="lang">{{ task.src.language.replace('X_', '').toLowerCase() }}</span>
                                 </v-chip>
                             </v-item>
                             <v-item>
