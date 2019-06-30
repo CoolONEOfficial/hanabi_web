@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
     <div class="wrapper pt-4 pl-4 pr-4 pb-4">
         <h1 class="font-weight-black mb-2">{{ review.name }}</h1>
         <p>{{ review.description }}</p>
@@ -28,7 +28,7 @@
 
                 <v-card>
                     <v-card-text>
-                        <SrcCode :task="review" :readOnly="true"></SrcCode>
+                        <SrcCode :task="review" readOnly></SrcCode>
                     </v-card-text>
                 </v-card>
 

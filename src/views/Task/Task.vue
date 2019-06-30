@@ -21,27 +21,32 @@
             </v-card>
         </v-dialog>
         <v-layout column class="pa-3">
-            <div class="headline mb-3">{{ task.name }}</div>
-            <span v-html="task.description" class="mb-3"></span>
-            <SrcCode :src-code="task.src">
-                <v-toolbar dense>
-                    <v-toolbar-title>{{ task.src.language != null ? task.src.language.replace('X_', '') : '' }}</v-toolbar-title>
+            <v-card class="px-3">
+                <div class="headline my-3">{{ task.name }}</div>
+                <v-divider class="mb-3"></v-divider>
+                <span v-html="task.description"></span>
+                <v-divider class="mt-3"></v-divider>
 
-                    <v-spacer></v-spacer>
+            </v-card>
+            <SrcCode :src-code="task.src" class="mt-3">
+                <span style="font-size: 15pt" class="mr-3">Send your own solution</span>
 
-                    <span style="font-size: 15pt" class="mr-3">Send your own solution</span>
-
-                    <v-btn icon @click="solve">
-                        <v-icon>send</v-icon>
-                    </v-btn>
-                </v-toolbar>
+                <v-btn icon @click="solve">
+                    <v-icon>send</v-icon>
+                </v-btn>
             </SrcCode>
-            <v-divider class="my-3 mt-5"></v-divider>
-            <span class="display-1">Other solutions:</span>
+
+            <v-card class="mt-3">
+                <UserPreview user="task.user"></UserPreview>
+            </v-card>
+
+            <span class="display-1 mt-5">Community solutions:</span>
+            <v-divider class="my-3"></v-divider>
             <div v-if="task.solutions && task.solutions.length">
                 <Solution :key="index" v-for="(s, index) in task.solutions"
                           :srcCode="s.src"
-                            :user="s.user"></Solution>
+                          :user="s.user">
+                </Solution>
             </div>
             <span v-else class="text-xs-center ma-3 display-2"><small>No solutions..</small><br><b>Be first!</b></span>
         </v-layout>
@@ -52,10 +57,11 @@
     import axios from "axios";
     import SrcCode from "../SrcCode/SrcCode";
     import Solution from "../Solution/Solution";
+    import UserPreview from "../User/UserPreview/UserPreview";
 
     export default {
         name: "Task",
-        components: {Solution, SrcCode},
+        components: {UserPreview, Solution, SrcCode},
         data() {
             return {
                 sending: false,
@@ -66,6 +72,7 @@
                         language: 'text',
                     },
                     description: 'Loading...',
+                    user: {}
                 },
             }
         },

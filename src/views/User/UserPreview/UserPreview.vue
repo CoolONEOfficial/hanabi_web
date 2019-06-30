@@ -4,7 +4,7 @@
         <v-avatar
                 class="ma-3"
                 color="grey lighten-4">
-            <v-img :src="require('@/assets/useravatar.jpg')"/>
+            <v-img :src="require('@/assets/' + user.id + '.jpg')"/>
         </v-avatar>
 
         <v-layout column class="justify-center">

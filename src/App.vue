@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="app" data-app>
         <div v-if="['login'].indexOf($route.name) <= -1">
             <v-navigation-drawer v-model="open" absolute
                                  temporary>
@@ -9,7 +9,7 @@
                                 class="ma-3"
                                 color="grey lighten-4"
                         >
-                            <v-img :src="require('@/assets/useravatar.jpg')"/>
+                            <v-img :src="require('@/assets/1.jpg')"/>
                         </v-avatar>
                         <h1 class="headline font-weight-black mx-3">{{ $store.getters.USER.name }}</h1>
                         <h2 class="subheading font-weight-normal mb-3 mx-3">{{ $store.getters.USER.post }}</h2>
@@ -31,26 +31,33 @@
                             <v-list-tile-title>Reviews</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-
-                    <v-list-tile>
+                    <v-list-tile @click="$router.push('/hiring')">
                         <v-list-tile-action>
-                            <v-icon>person</v-icon>
+                            <v-icon>whatshot</v-icon>
                         </v-list-tile-action>
                         <v-list-tile-content>
-                            <v-list-tile-title>Users</v-list-tile-title>
+                            <v-list-tile-title>Hiring</v-list-tile-title>
                         </v-list-tile-content>
                     </v-list-tile>
-                    <v-list-tile>
-                        <v-list-tile-action>
-                            <v-icon>dashboard</v-icon>
-                        </v-list-tile-action>
-                        <v-list-tile-content>
-                            <v-list-tile-title>Leaderboard</v-list-tile-title>
-                        </v-list-tile-content>
-                    </v-list-tile>
+                    <!--<v-list-tile>-->
+                        <!--<v-list-tile-action>-->
+                            <!--<v-icon>person</v-icon>-->
+                        <!--</v-list-tile-action>-->
+                        <!--<v-list-tile-content>-->
+                            <!--<v-list-tile-title>Users</v-list-tile-title>-->
+                        <!--</v-list-tile-content>-->
+                    <!--</v-list-tile>-->
+                    <!--<v-list-tile>-->
+                        <!--<v-list-tile-action>-->
+                            <!--<v-icon>dashboard</v-icon>-->
+                        <!--</v-list-tile-action>-->
+                        <!--<v-list-tile-content>-->
+                            <!--<v-list-tile-title>Leaderboard</v-list-tile-title>-->
+                        <!--</v-list-tile-content>-->
+                    <!--</v-list-tile>-->
                 </v-list>
             </v-navigation-drawer>
-            <v-toolbar fixed>
+            <v-toolbar style="position: absolute; top: 0">
                 <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
                 <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -99,7 +106,6 @@
     #background {
         width: 100%;
         height: auto !important;
-        height: 100%;
         min-height: 100%;
         background-image: url('assets/auth_background.jpg');
         background-position: center center;

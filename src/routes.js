@@ -1,3 +1,4 @@
+const Hiring = () => import('./views/Hiring/Hiring');
 const UserProfile = () => import('./views/User/UserProfile/UserProfile');
 const Login = () => import('./views/Login/Login');
 const ReviewList = () => import('./views/Review/ReviewList/ReviewList');
@@ -34,6 +35,11 @@ export const routes = [
         path: '/tasks/:id',
         component: Task,
         name: 'Task description'
+    },
+    {
+        path: '/hiring',
+        component: Hiring,
+        name: 'Hiring'
     },
     {
         path: '*',

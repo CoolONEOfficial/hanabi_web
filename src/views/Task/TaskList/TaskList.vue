@@ -32,7 +32,7 @@
         TaskAdd,
       TaskPreview
     },
-    created () {
+    mounted () {
       this.loadAllTasks();
     },
     data: () => ({

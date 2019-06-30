@@ -2,7 +2,7 @@
     <v-dialog v-model="dialog" fullscreen>
         <template v-slot:activator="{ on }">
             <v-btn icon v-on="on">
-                <v-icon>add</v-icon>
+                <v-icon>rate_review</v-icon>
             </v-btn>
             <v-dialog
                     v-model="loading"
@@ -15,7 +15,7 @@
                         dark
                 >
                     <v-card-text>
-                        Creating task...
+                        Adding review...
                         <v-progress-linear
                                 indeterminate
                                 color="white"
@@ -30,7 +30,7 @@
                 <v-btn icon dark @click="dialog = false">
                     <v-icon>close</v-icon>
                 </v-btn>
-                <v-toolbar-title>Create task</v-toolbar-title>
+                <v-toolbar-title>Add review</v-toolbar-title>
                 <v-spacer></v-spacer>
                 <v-toolbar-items>
                     <v-btn dark flat @click="send">
@@ -47,15 +47,6 @@
                     ></v-text-field>
                     <VueEditor v-model="html">
                     </VueEditor>
-                    <h3 class="ma-3">Enter code (optional):</h3>
-                    <SrcCode :src-code="{lang: lang, srcCode: srcCode}">
-                        <v-select
-                                class="ma-3"
-                                v-model="lang"
-                                :items="languages"
-                                style="width: 100%"
-                        ></v-select>
-                    </SrcCode>
                 </v-flex>
             </v-layout>
         </v-card>
@@ -65,39 +56,26 @@
 <script>
     import {VueEditor} from "vue2-editor";
     import axios from "axios";
-    import SrcCode from "../../SrcCode/SrcCode";
 
     export default {
-        components: {
-            SrcCode,
-            VueEditor: VueEditor
-        },
-        name: "TaskAdd",
+        name: "ReviewAdd",
+        components: {VueEditor},
         data() {
             return {
-                srcCode: '// TODO: enter code here',
-                lang: 'X_JAVA',
                 dialog: false,
                 title: "",
-                html: "Task description <b>here</b>",
+                html: "Write review there..",
                 loading: false,
-                languages: ['X_JAVA', 'JAVASCRIPT',],
             };
         },
         methods: {
             async send() {
                 this.loading = true;
 
-                let resp = await axios.post('http://10.20.2.65:8081/task/create?id=1',
+                let resp = await axios.post('http://10.20.2.65:8081/task/review?id=1',
                     {
                         description: this.html,
                         name: this.title,
-                        src: {
-                            srcCode: this.srcCode,
-                            language: this.lang
-                        },
-                        difficulty: "HARD",
-                        type: "PERFORMANCE",
                     },
                     {
                         'Access-Control-Allow-Origin': '*',
@@ -106,7 +84,7 @@
 
                 console.log("resp: ", resp);
 
-                this.$parent.loadAllTasks();
+                this.$parent.loadTask();
 
                 this.loading = false;
                 this.dialog = false;
