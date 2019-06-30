@@ -2,6 +2,8 @@
     <div class="task">
         <router-link :to="`/tasks/${task.id}`">
             <v-card>
+                <UserPreview :user="task.creator"></UserPreview>
+                <v-divider></v-divider>
                 <v-card-title primary-title>
                     <div class="task__body">
                         <div class="body-2 font-weight-bold mb-1">{{ task.name }}</div>
@@ -33,9 +35,11 @@
 </template>
 
 <script>
+  import UserPreview from "../../User/UserPreview/UserPreview";
   export default {
     name: "TaskPreview",
-    props: {
+      components: {UserPreview},
+      props: {
       task: {
         type: Object,
         required: true

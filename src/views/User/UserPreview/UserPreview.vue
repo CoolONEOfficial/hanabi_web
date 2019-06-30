@@ -1,10 +1,10 @@
 <template>
-    <router-link :to="'/users/' + ((user.id % 3) + 1)" style="text-decoration: none; color: black;">
+    <router-link :to="'/users/' + user.id" style="text-decoration: none; color: black;">
     <v-layout row class="user-preview-wrapper align-center">
         <v-avatar
                 class="ma-3"
                 color="grey lighten-4">
-            <v-img :src="require('@/assets/' + ((user.id % 3) + 1) + '.jpg')"/>
+            <v-img :src="require('@/assets/' + user.id + '.jpg')"/>
         </v-avatar>
 
         <v-layout column class="justify-center">

@@ -3,8 +3,9 @@
         <v-card class="pt-1">
             <UserPreview :user="user"></UserPreview>
         </v-card>
-        <div>{{ rating  }}</div>
+
         <SrcCode :srcCode="srcCode" readOnly>
+            <v-rating v-model="rating" readonly></v-rating>
             <ReviewAdd :solution-id="solutionId"></ReviewAdd>
         </SrcCode>
         <v-layout column v-if="reviews && reviews.length" class="ml-3">
