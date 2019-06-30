@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card style="width: 100%;" class="mt-3">
         <slot></slot>
         <codemirror v-model="srcCode.srcCode"
                     :options="{
@@ -8,7 +8,6 @@
                     'text',
                     lineNumbers: true,
                     line: true,
-
                 }"
         ></codemirror>
     </v-card>
