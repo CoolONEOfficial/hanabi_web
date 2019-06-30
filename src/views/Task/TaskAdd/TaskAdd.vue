@@ -88,7 +88,7 @@
             async send() {
                 this.loading = true;
 
-                let resp = await axios.post('http://10.20.2.65:8081/task/create?id=1',
+                let resp = await axios.post('http://10.20.2.65:8081/task/create?id=' + this.$store.getters.USER.id,
                     {
                         description: this.html,
                         name: this.title,

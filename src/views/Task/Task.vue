@@ -92,7 +92,7 @@
             async solve() {
                 this.sending = true;
 
-                let resp = await axios.post('http://10.20.2.65:8081/task/solve?userId=1&taskId=' + this.$route.params.id,
+                let resp = await axios.post('http://10.20.2.65:8081/task/solve?userId=' + this.$store.getters.USER.id + '&taskId=' + this.$route.params.id,
                     {
                         rating: this.rating,
                         src: this.task.src,

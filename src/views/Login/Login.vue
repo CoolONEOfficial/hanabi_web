@@ -15,24 +15,24 @@
                     ></v-img>
                 </v-flex>
 
-                <v-flex mb-4>
+                <v-flex>
                     <h1 class="display-3 mb-3">
-                        Login
+                        Log in as...
                     </h1>
-                    <v-form>
-                        <v-text-field
-                                prepend-icon="face"
-                                type="text"
-                        >
-                        </v-text-field>
-                        <v-text-field
-                                prepend-icon="lock"
-                                type="password"
-                        >
-                        </v-text-field>
-                    </v-form>
-                    <br>
-                    <v-btn color="primary" style="background: rgb(20, 54, 143)" large to="/users/1">Enter</v-btn>
+                    <v-layout row>
+                        <v-avatar class="ma-3" v-for="i in Array(3).keys()" :key="i" style="cursor: pointer"
+                                  @click="login(i + 1)"
+                                  :size="$store.getters.USER.id
+                         ===
+                         i + 1 ?
+                         120 : 90">
+                            <v-img
+                                    :src="require('../../assets/' + (i + 1) + '.jpg')"
+                                    class="my-3"
+                                    contain
+                            ></v-img>
+                        </v-avatar>
+                    </v-layout>
                 </v-flex>
 
             </v-layout>
@@ -42,7 +42,14 @@
 
 <script>
     export default {
-        name: "Login"
+        name: "Login",
+        methods: {
+            async login(id) {
+
+                await this.$store.dispatch('LOGIN', id);
+                this.$router.push('/users/' + id);
+            }
+        },
     }
 </script>
 

@@ -122,13 +122,13 @@
         users: [],
       };
     },
-    computed: {
-      st () {
-        return null;
-      }
-    },
     methods: {
       search() {
+        // axios.post('http://10.20.2.65:8081/task/suitable?id=' + this.$store.getters.USER.id, {
+        //     filters: this.selectedTags
+        //   },
+        //   ,)
+        // .then(({data}) => {
         axios.post('http://10.20.2.65:8081/user/suitable')
         .then(({ data }) => {
           this.users = data;

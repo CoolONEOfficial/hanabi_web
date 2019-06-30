@@ -1,10 +1,10 @@
 <template>
-    <router-link :to="'/users/' + user.id" style="text-decoration: none; color: black;">
+    <router-link :to="'/users/' + (user ? user.id : 'undefined')" style="text-decoration: none; color: black;">
         <v-layout row class="user-preview-wrapper align-top">
             <v-avatar
                     class="ma-3 pt-3"
                     color="grey lighten-4">
-                <v-img :src="require('@/assets/' + user.id + '.jpg')"/>
+                <v-img :src="require('@/assets/' + (user ? user.id : 'undefined') + '.jpg')"/>
             </v-avatar>
 
             <v-layout column class="justify-center pt-3">

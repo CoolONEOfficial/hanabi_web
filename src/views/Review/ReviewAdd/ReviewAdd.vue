@@ -75,7 +75,7 @@
             async send() {
                 this.loading = true;
 
-                let resp = await axios.post('http://10.20.2.65:8081/solution/review?userId=1&solutionId=' + this.solutionId,
+                let resp = await axios.post('http://10.20.2.65:8081/solution/review?userId=' + this.$store.getters.USER.id + '&solutionId=' + this.solutionId,
                     {
                         description: this.html,
                         title: this.title,
