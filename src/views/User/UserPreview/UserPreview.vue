@@ -11,7 +11,7 @@
                 <h1 class="headline font-weight-black mx-3">{{ user.name != null ? user.name : 'Super name!' }}</h1>
                 <h2 class="subheading font-weight-normal mb-3 mx-3">{{ user.post != null ? user.post : 'Super developer' }}</h2>
                 <div class="mx-3 mb-3" v-show="showAddInfo">
-                    <h3><span>Rating:</span> {{ user.rating }}</h3>
+                    <v-rating v-model="user.rating" readonly></v-rating>
                     <v-layout wrap class="mt-3">
                         <v-chip :key="index" v-for="(language, index) in user.languages">
                             {{ language }}
