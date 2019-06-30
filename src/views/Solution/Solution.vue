@@ -1,9 +1,10 @@
 <template>
     <v-layout column>
-        <v-card class="pt-1">
+        <v-card class="py-2 px-3">
             <UserPreview :user="user"></UserPreview>
+            <v-rating v-model="rating" readonly small />
         </v-card>
-        <div>{{ rating  }}</div>
+
         <SrcCode :srcCode="srcCode" readOnly>
             <ReviewAdd :solution-id="solutionId"></ReviewAdd>
         </SrcCode>
