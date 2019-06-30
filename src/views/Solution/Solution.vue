@@ -4,9 +4,17 @@
             <UserPreview :user="user"></UserPreview>
         </v-card>
         <SrcCode :srcCode="srcCode" readOnly>
-            <ReviewAdd></ReviewAdd>
+            <ReviewAdd :solution-id="solutionId"></ReviewAdd>
         </SrcCode>
-
+        <v-layout column v-if="reviews" class="ml-3">
+            <span class="display-1">Reviews:</span>
+            <v-card v-for="(r, index) of reviews" :key="index" class="mb-3">
+                <Review :review="r"></Review>
+            </v-card>
+        </v-layout>
+        <v-layout v-else class="align-center justify-center">
+            <span class="display-1 ma-3">No reviews</span>
+        </v-layout>
     </v-layout>
 </template>
 
@@ -14,12 +22,15 @@
     import SrcCode from "../SrcCode/SrcCode";
     import UserPreview from "../User/UserPreview/UserPreview";
     import ReviewAdd from "../Review/ReviewAdd/ReviewAdd";
+    import Review from "../Review/Review";
+
     export default {
-        props: ['srcCode', 'user'],
+        props: ['srcCode', 'user', 'solutionId', 'reviews'],
         name: "Solution",
         components: {
+            Review,
             ReviewAdd,
-          UserPreview, SrcCode
-        }
+            UserPreview, SrcCode
+        },
     }
 </script>
