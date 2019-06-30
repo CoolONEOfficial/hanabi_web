@@ -10,7 +10,7 @@
                     </v-avatar>
                     <h1 class="headline font-weight-black">{{ user.name }}</h1>
                     <h2 class="subheading font-weight-normal mb-3">{{ user.post }}</h2>
-                    <h3><span>Rating:</span> {{ user.rating }}</h3>
+                    <v-rating v-model="user.rating" readonly small />
                     <v-layout wrap class="mt-3 justify-center">
                         <v-chip :key="index" v-for="(language, index) in user.languages">
                             {{ language }}

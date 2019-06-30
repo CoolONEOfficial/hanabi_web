@@ -2,7 +2,7 @@
     <v-layout column>
         <v-card class="py-2 px-3">
             <UserPreview :user="user"></UserPreview>
-            <v-rating v-model="rating" readonly small />
+            <v-rating v-model="user.rating" readonly small />
         </v-card>
 
         <SrcCode :srcCode="srcCode" readOnly>
